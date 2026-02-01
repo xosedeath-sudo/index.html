@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Will You Be My Valentine? 💖</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+    }
+
+    .card {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        animation: pop 1s ease;
+    }
+
+    h1 {
+        color: #ff4d6d;
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #444;
+        font-size: 18px;
+        margin-bottom: 25px;
+    }
+
+    button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 30px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 10px;
+        transition: transform 0.2s;
+    }
+
+    .yes {
+        background: #ff4d6d;
+        color: white;
+    }
+
+    .no {
+        background: #ddd;
+        color: #333;
+        position: absolute;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+    }
+
+    @keyframes pop {
+        0% { transform: scale(0); }
+        100% { transform: scale(1); }
+    }
+
+    .heart {
+        position: absolute;
+        color: white;
+        font-size: 20px;
+        animation: float 6s infinite;
+        opacity: 0.7;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(100vh) scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-10vh) scale(1.5);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Hey My Love 💕</h1>
+    <p>
+        Every moment with you feels magical.<br>
+        My heart already chose you…<br><br>
+        <strong>Will you be my Valentine? 🌹</strong>
+    </p>
+
+    <button class="yes" onclick="yesClicked()">YES 💖</button>
+    <button class="no" onmouseover="moveNo()">NO 😜</button>
+</div>
+
+<script>
+    function yesClicked() {
+        document.body.innerHTML = `
+        <div style="
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            background:linear-gradient(135deg,#ff758c,#ff7eb3);
+            color:white;
+            text-align:center;
+            font-family:'Segoe UI',sans-serif;
+        ">
+            <div>
+                <h1 style="font-size:40px;">YAYYYYY 🥹❤️</h1>
+                <p style="font-size:22px;">
+                    You just made me the happiest person alive 💞<br>
+                    I promise to love you, today and always 🌹
+                </p>
+            </div>
+        </div>`;
+    }
+
+    function moveNo() {
+        const noBtn = document.querySelector('.no');
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+        noBtn.style.left = x + 'px';
+        noBtn.style.top = y + 'px';
+    }
+
+    // floating hearts
+    setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }, 300);
+</script>
+
+</body>
+</html>
